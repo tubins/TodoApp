@@ -16,3 +16,10 @@ exports.create_a_task = (req, res) => {
         res.json(task);
     });
 };
+
+exports.update_a_task = (req, res) => {
+    Task.findByIdAndUpdate({ _id: req.params.taskId }, req.body, { new: true }, (err) => {
+        if (err) res.send(err);
+        res.json(task);
+    });
+};
