@@ -23,3 +23,10 @@ exports.update_a_task = (req, res) => {
         res.json(task);
     });
 };
+
+exports.delete_a_task = (req, res) => {
+    Task.remove({ _id: req.params.taskId }, (err, task) => {
+        if (err) res.send(err);
+        res.json({ message: "Task id successfully deleted - " + task._id });
+    });
+};
