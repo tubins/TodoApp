@@ -9,6 +9,14 @@ exports.list_all_tasks = (req, res) => {
     });
 };
 
+exports.read_a_task = function (req, res) {
+    Task.findById(req.params.taskId, function (err, task) {
+        if (err)
+            res.send(err);
+        res.json(task);
+    });
+};
+
 exports.create_a_task = (req, res) => {
     var new_task = new Task(req.body);
     new_task.save((err, task) => {
